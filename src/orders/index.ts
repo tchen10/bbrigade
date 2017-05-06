@@ -7,6 +7,7 @@ import {OrdersComponent} from './components/orders';
 import {OrderListComponent} from './components/order-list';
 import {OrderFormComponent} from './components/order-form';
 import {OrderService} from './services/order_service';
+import {FormCheckbox} from './components/form-checkbox';
 
 const routes: Routes = [
     {path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]}
@@ -16,7 +17,8 @@ const routes: Routes = [
     declarations: [
         OrdersComponent,
         OrderListComponent,
-        OrderFormComponent
+        OrderFormComponent,
+        FormCheckbox
     ],
     imports: [
         CommonModule,
