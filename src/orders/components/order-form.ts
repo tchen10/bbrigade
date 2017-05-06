@@ -8,7 +8,7 @@ import {Order} from '../models/order';
         <form class="order-form">
             <div class="form-group">
                 <label for="name">Name: </label>
-                <input type="text" name="name" [(ngModel)]="order.name"/>
+                <input required type="text" name="name" [(ngModel)]="order.name"/>
             </div>
             <div class="form-group">
                 <h4>Base 1:</h4>
@@ -70,7 +70,7 @@ import {Order} from '../models/order';
 })
 export class OrderFormComponent {
     @Output() createOrder = new EventEmitter(false);
-    order: Order = Order.default();
+    order: Order = new Order();
 
     submit(): void {
         this.createOrder.emit(this.order);

@@ -8,23 +8,11 @@ export interface IOrder {
 }
 
 export class Order implements IOrder {
-    name: string;
-    base: Base;
-    protein: Protein;
-    topping: Topping;
-    sauce: Sauce;
-
-    constructor(name: string, base: Base, protein: Protein, topping: Topping, sauce: Sauce) {
-        this.name = name;
-        this.base = base;
-        this.protein = protein;
-        this.topping = topping;
-        this.sauce = sauce;
-    }
-
-    static default(): Order {
-        return new Order('', new Base(), new Protein(), new Topping(), new Sauce());
-    }
+    name: string = '';
+    base: Base = new Base();
+    protein: Protein = new Protein();
+    topping: Topping = new Topping();
+    sauce: Sauce = new Sauce();
 }
 
 class Base {
