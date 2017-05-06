@@ -1,23 +1,24 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component} from '@angular/core';
+import {OrderService} from '../services/order_service';
 
 @Component({
-  selector: 'orders',
-  template: `
-    <div class="g-row">
-      <div class="g-col">
-        <order-form></order-form>
-      </div>
+    selector: 'orders',
+    template: `
+        <h1>Existing Orders</h1>
+        <div class="g-row">
+            <div class="g-col">
+                <order-form (createOrder)="orderService.create($event)"></order-form>
+            </div>
 
-      <div class="g-col">
-       <order-list></order-list>
-      </div>
-    </div>
-  `
+            <div class="g-col">
+                <order-list [orders]="orderService.orders$"></order-list>
+            </div>
+        </div>
+    `
 })
 
 export class OrdersComponent {
 
-  constructor(public route: ActivatedRoute) {
-  }
+    constructor(public orderService: OrderService) {
+    }
 }
