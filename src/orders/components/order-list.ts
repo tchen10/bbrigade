@@ -4,7 +4,7 @@ import {FirebaseListObservable} from "angularfire2";
 
 @Component({
     selector: 'order-list',
-    template: `
+    template: `        
         <ul class='order-list'>
             <li *ngFor='let order of orders | async'>
                 {{order.name}}

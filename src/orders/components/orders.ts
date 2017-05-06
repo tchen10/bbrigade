@@ -6,9 +6,9 @@ import {OrderService} from '../services/order_service';
     template: `
         <div class="row">
             <h1>Orders</h1>
+            <span (click)="showForm()" class="glyphicon glyphicon-plus-sign"></span>
         </div>
-        <div class="row">
-            <h2>New Order</h2>
+        <div *ngIf="form" class="row">
             <order-form (createOrder)="orderService.create($event)"></order-form>
         </div>
         <div class="row">
@@ -18,7 +18,12 @@ import {OrderService} from '../services/order_service';
 })
 
 export class OrdersComponent {
+    form: boolean = false;
 
     constructor(public orderService: OrderService) {
+    }
+
+    showForm() {
+        this.form = !this.form;
     }
 }

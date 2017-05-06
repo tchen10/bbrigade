@@ -49,7 +49,8 @@ import {Order} from '../models/order';
                                [(orderItem)]="order.topping.beanSprout"></form-checkbox>
                 <form-checkbox [label]="'Cabbage'" [name]="'cabbage'"
                                [(orderItem)]="order.topping.cabbage"></form-checkbox>
-                <form-checkbox [label]="'Beets'" [name]="'beets'" [(orderItem)]="order.topping.beets"></form-checkbox>
+                <form-checkbox [label]="'Beets'" [name]="'beets'"
+                               [(orderItem)]="order.topping.beets"></form-checkbox>
             </div>
             <div class="form-group col-md-3">
                 <h4>Sauce:</h4>
