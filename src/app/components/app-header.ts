@@ -6,8 +6,10 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@
     template: `
         <nav class="navbar navbar-default">
             <div class="container">
-                <h1 class="navbar-brand">Bibille Brigade</h1>
-                <p class="navbar-text navbar-right"><a *ngIf="authenticated" (click)="signOut.emit()" href="#">Sign out</a></p>
+                <a class="navbar-brand">Bibille Brigade</a>
+                <ul class="nav navbar-nav navbar-right">
+                    <li *ngIf="authenticated"><a (click)="signOut.emit()" href="#">Sign out</a></li>
+                </ul>
             </div>
         </nav>
     `

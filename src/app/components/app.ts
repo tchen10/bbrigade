@@ -7,14 +7,16 @@ import {AuthService} from '../../auth';
     styles: [
         require('./app.scss')
     ],
-    template: `        
-                <app-header
-                        [authenticated]="auth.authenticated"
-                        (signOut)="signOut()"></app-header>
+    template: `
+        <app-header
+                [authenticated]="auth.authenticated"
+                (signOut)="signOut()"></app-header>
 
-                <main class="main">
-                    <router-outlet></router-outlet>
-                </main>
+        <main class="main">
+            <div class="container">
+                <router-outlet></router-outlet>
+            </div>
+        </main>
     `
 })
 

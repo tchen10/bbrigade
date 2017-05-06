@@ -4,14 +4,13 @@ import {OrderService} from '../services/order_service';
 @Component({
     selector: 'orders',
     template: `
-        <h1>Existing Orders</h1>
-        <div class="g-row">
-            <div class="g-col">
-                <order-form (createOrder)="orderService.create($event)"></order-form>
-            </div>
-
-            <div class="g-col">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>Orders</h1>
                 <order-list [orders]="orderService.orders$"></order-list>
+            </div>
+            <div class="col-md-4">
+                <order-form (createOrder)="orderService.create($event)"></order-form>
             </div>
         </div>
     `

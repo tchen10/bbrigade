@@ -33,16 +33,8 @@ export class AuthService {
       .catch(error => console.log('ERROR @ AuthService#signInAnonymously() :', error));
   }
 
-  signInWithGithub(): firebase.Promise<FirebaseAuthState> {
-    return this.signIn(AuthProviders.Github);
-  }
-
   signInWithGoogle(): firebase.Promise<FirebaseAuthState> {
     return this.signIn(AuthProviders.Google);
-  }
-
-  signInWithTwitter(): firebase.Promise<FirebaseAuthState> {
-    return this.signIn(AuthProviders.Twitter);
   }
 
   signInWithFacebook(): firebase.Promise<FirebaseAuthState> {
