@@ -1,5 +1,7 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {Order} from '../models/order';
+import {OrderService} from '../services/order_service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'order-form',
@@ -70,12 +72,12 @@ import {Order} from '../models/order';
             <div class="col-md-12">
                 <div class="form-center">
                     <div class="form-group">
-                    <textarea required type="text" name="name" placeholder="anything else?"
+                    <textarea type="text" name="name" placeholder="anything else?"
                               [(ngModel)]="order.comments">
                     </textarea>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-default btn-block" (click)="submit()">Submit</button>
+                        <button [disabled]="formSubmitted" class="btn btn-default btn-block" (click)="submit()">Submit</button>
                     </div>
                 </div>
             </div>
@@ -83,11 +85,16 @@ import {Order} from '../models/order';
     `
 })
 export class OrderFormComponent {
-    @Output() createOrder = new EventEmitter(false);
     order: Order = new Order();
+    formSubmitted: boolean = false;
+
+    constructor(public orderService: OrderService, public router: Router) {
+    }
 
     submit(): void {
-        this.createOrder.emit(this.order);
+        this.formSubmitted = true;
+        this.orderService.create(this.order);
+        this.router.navigateByUrl('/orders');
     }
 }
 

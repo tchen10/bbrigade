@@ -54,10 +54,8 @@ class Sauce {
 
 export class OrderItem {
     selected: boolean;
-    options = {
-        amount: 'regular',
-        detail: ''
-    };
+    amount: '';
+    detail: '';
 
     constructor(selected: boolean = false) {
         this.selected = selected;

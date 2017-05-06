@@ -10,7 +10,8 @@ import {OrderService} from './services/order_service';
 import {FormCheckbox} from './components/form-checkbox';
 
 const routes: Routes = [
-    {path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]}
+    {path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]},
+    {path: 'orders/create', component: OrderFormComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
