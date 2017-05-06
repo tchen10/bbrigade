@@ -15,7 +15,7 @@ import {Order} from '../models/order';
             </div>
         </div>
         <div class="row">
-            <order-list [orders]="orders"></order-list>
+            <order-list [orders]="orderService.orders$"></order-list>
         </div>
     `
 })
@@ -24,10 +24,5 @@ export class OrdersComponent {
     orders: Order[];
 
     constructor(public orderService: OrderService) {
-        orderService.orders$.subscribe((snapshot) => {
-            this.orders = snapshot.map((order) => {
-                return Order.createFromSnapshot(order);
-            });
-        });
     }
 }

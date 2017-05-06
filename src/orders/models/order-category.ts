@@ -14,21 +14,6 @@ export class OrderCategory implements IOrderCategory {
         this.orderItems = orderItems;
     }
 
-    display(): string {
-        const itemStrings = [];
-        this.orderItems.forEach((item) => {
-            if (item.selected) {
-                let display = item.label;
-                if (item.amount || item.detail) {
-                    display += item.amount ? ` (${item.amount}` : ' (';
-                    display += item.detail ? ` ${item.detail})` : ')';
-                }
-                itemStrings.push(display);
-            }
-        });
-        return itemStrings.join(', ');
-    }
-
     static createFromSnapshot(orderCategories: IOrderCategory[]): OrderCategory[] {
         return orderCategories.map((category) => {
             return new OrderCategory(category.name, category.orderItems);

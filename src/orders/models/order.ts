@@ -13,14 +13,6 @@ export class Order implements IOrder {
     comments: string;
     orderCategories: OrderCategory[];
 
-    display(): string {
-        const displays = this.orderCategories.map((category) => {
-            let display = `${category.name}: `;
-            return display += category.display();
-        });
-        return displays.join(', ');
-    }
-
     constructor(name: string = '', comments: string = '', orderCategories: OrderCategory[] = []) {
         this.name = name;
         this.comments = comments;

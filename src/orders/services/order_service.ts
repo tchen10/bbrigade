@@ -15,4 +15,8 @@ export class OrderService {
     create(order: Order): firebase.Promise<any> {
         return this.orders$.push(order);
     }
+
+    update(order: IOrder): firebase.Promise<any> {
+        return this.orders$.update(order.$key, order);
+    }
 }
