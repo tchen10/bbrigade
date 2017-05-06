@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {OrderService} from '../services/order_service';
+import {Order} from '../models/order';
 
 @Component({
     selector: 'orders',
@@ -14,12 +15,19 @@ import {OrderService} from '../services/order_service';
             </div>
         </div>
         <div class="row">
-            <order-list [orders]="orderService.orders$"></order-list>
+            <order-list [orders]="orders"></order-list>
         </div>
     `
 })
 
 export class OrdersComponent {
+    orders: Order[];
+
     constructor(public orderService: OrderService) {
+        orderService.orders$.subscribe((snapshot) => {
+            this.orders = snapshot.map((order) => {
+                return Order.createFromSnapshot(order);
+            });
+        });
     }
 }

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {OrderItem} from '../models/order';
+import {OrderItem} from '../models/order-item';
 
 @Component({
     selector: 'form-checkbox',
@@ -10,12 +10,12 @@ import {OrderItem} from '../models/order';
         <div class="form-row">
             <div class="order-item">
                 <label>
-                    <input class="form-check-input" type="checkbox" name="{{name}}" [ngModel]="orderItem.selected"
+                    <input class="form-check-input" type="checkbox" name="{{orderItem.name}}" [ngModel]="orderItem.selected"
                            (ngModelChange)="change($event, 'selected')"/>
-                    {{label}}
+                    {{orderItem.label}}
                 </label>
                 <div class="options">
-                    <select class="form-control" name="{{name}}-amount" [ngModel]="orderItem.amount"
+                    <select class="form-control" name="{{orderItem.name}}-amount" [ngModel]="orderItem.amount"
                             (ngModelChange)="change($event, 'amount')">
                         <option value=""></option>
                         <option value="lite">lite</option>
@@ -24,7 +24,7 @@ import {OrderItem} from '../models/order';
                     <span (click)="showComment()" class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                 </div>
             </div>
-            <input *ngIf="comments" class="comments" type="text" name="{{name}}-text"
+            <input *ngIf="comments" class="comments" type="text" name="{{orderItem.name}}-comments"
                    [ngModel]="orderItem.detail"
                    (ngModelChange)="change($event, 'detail')" placeholder="comments">
         </div>
@@ -32,11 +32,8 @@ import {OrderItem} from '../models/order';
     `
 })
 
-export class FormCheckbox {
+export class OrderFormCheckboxComponent {
     @Input() orderItem: OrderItem;
-    @Input() label: string;
-    @Input() name: string;
-
     @Output() orderItemChange = new EventEmitter();
 
     comments: boolean = false;

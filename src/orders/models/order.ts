@@ -1,63 +1,68 @@
+import {OrderCategory} from './order-category';
+import {OrderItem} from './order-item';
+
 export interface IOrder {
     $key?: string;
     name: string;
     comments: string;
-    base: Base;
-    protein: Protein;
-    topping: Topping;
-    sauce: Sauce;
+    orderCategories: OrderCategory[];
 }
 
 export class Order implements IOrder {
-    name: string = '';
-    comments: string = '';
-    base: Base = new Base();
-    protein: Protein = new Protein();
-    topping: Topping = new Topping();
-    sauce: Sauce = new Sauce();
-}
+    name: string;
+    comments: string;
+    orderCategories: OrderCategory[];
 
-class Base {
-    whiteRice: OrderItem = new OrderItem();
-    brownRice: OrderItem = new OrderItem();
-    purpleRice: OrderItem = new OrderItem();
-    lettuce: OrderItem = new OrderItem();
-}
+    display(): string {
+        const displays = this.orderCategories.map((category) => {
+            let display = `${category.name}: `;
+            return display += category.display();
+        });
+        return displays.join(', ');
+    }
 
-class Protein {
-    chicken: OrderItem = new OrderItem();
-    beef: OrderItem = new OrderItem();
-    spicyPork: OrderItem = new OrderItem();
-    shrimp: OrderItem = new OrderItem();
-    tofu: OrderItem = new OrderItem();
-    mushroom: OrderItem = new OrderItem();
-}
+    constructor(name: string = '', comments: string = '', orderCategories: OrderCategory[] = []) {
+        this.name = name;
+        this.comments = comments;
+        this.orderCategories = orderCategories;
+    }
 
-class Topping {
-    eggs: OrderItem = new OrderItem();
-    carrot: OrderItem = new OrderItem();
-    cucumber: OrderItem = new OrderItem();
-    radish: OrderItem = new OrderItem();
-    beanSprout: OrderItem = new OrderItem();
-    cabbage: OrderItem = new OrderItem();
-    beets: OrderItem = new OrderItem();
-}
+    static createFromSnapshot(snapshot: IOrder): Order {
+        return new Order(snapshot.name, snapshot.comments, OrderCategory.createFromSnapshot(snapshot.orderCategories));
+    }
 
-class Sauce {
-    koreanHot: OrderItem = new OrderItem();
-    bibille: OrderItem = new OrderItem();
-    teriyaki: OrderItem = new OrderItem();
-    yogurtWasabi: OrderItem = new OrderItem();
-    sesameSeeds: OrderItem = new OrderItem();
-    sesameOil: OrderItem = new OrderItem();
-}
-
-export class OrderItem {
-    selected: boolean;
-    amount: '';
-    detail: '';
-
-    constructor(selected: boolean = false) {
-        this.selected = selected;
+    static createBibimbap(): Order {
+        return new Order(undefined, undefined, [
+            new OrderCategory('Base 1', [
+                new OrderItem('White Rice', 'whiteRice'),
+                new OrderItem('Brown Rice', 'brownRice'),
+                new OrderItem('Purple Rice', 'purpleRice'),
+                new OrderItem('Lettuce', 'lettuce')
+            ]),
+            new OrderCategory('Base 2', [
+                new OrderItem('Chicken', 'chicken'),
+                new OrderItem('Beef', 'beef'),
+                new OrderItem('Spicy Pork', 'spicyPork'),
+                new OrderItem('Tofu', 'tofu'),
+                new OrderItem('Mushroom', 'mushroom')
+            ]),
+            new OrderCategory('Toppings', [
+                new OrderItem('Eggs', 'eggs'),
+                new OrderItem('Carrots', 'carrots'),
+                new OrderItem('Cucumbers', 'cucumbers'),
+                new OrderItem('Radish', 'radish'),
+                new OrderItem('Bean Sprouts', 'beanSprouts'),
+                new OrderItem('Cabbage', 'cabbage'),
+                new OrderItem('Beets', 'beets')
+            ]),
+            new OrderCategory('Sauce', [
+                new OrderItem('Korean Hot Sauce', 'koreanHot'),
+                new OrderItem('Bibille Sauce', 'bibille'),
+                new OrderItem('Teriyaki', 'teriyaki'),
+                new OrderItem('Yogurt Wasabi', 'yogurtWasabi'),
+                new OrderItem('Sesame Oil', 'sesameOil'),
+                new OrderItem('Sesame Seeds', 'sesameSeeds')
+            ])
+        ]);
     }
 }
