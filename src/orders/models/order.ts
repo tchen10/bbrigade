@@ -1,6 +1,7 @@
 export interface IOrder {
     $key?: string;
     name: string;
+    comments: string;
     base: Base;
     protein: Protein;
     topping: Topping;
@@ -9,6 +10,7 @@ export interface IOrder {
 
 export class Order implements IOrder {
     name: string = '';
+    comments: string = '';
     base: Base = new Base();
     protein: Protein = new Protein();
     topping: Topping = new Topping();
@@ -16,7 +18,7 @@ export class Order implements IOrder {
 }
 
 class Base {
-    whiteRice: OrderItem = new OrderItem(true);
+    whiteRice: OrderItem = new OrderItem();
     brownRice: OrderItem = new OrderItem();
     purpleRice: OrderItem = new OrderItem();
     lettuce: OrderItem = new OrderItem();
@@ -25,20 +27,20 @@ class Base {
 class Protein {
     chicken: OrderItem = new OrderItem();
     beef: OrderItem = new OrderItem();
-    spicyPork: OrderItem = new OrderItem(true);
+    spicyPork: OrderItem = new OrderItem();
     shrimp: OrderItem = new OrderItem();
     tofu: OrderItem = new OrderItem();
     mushroom: OrderItem = new OrderItem();
 }
 
 class Topping {
-    eggs: OrderItem = new OrderItem(true);
-    carrot: OrderItem = new OrderItem(true);
-    cucumber: OrderItem = new OrderItem(true);
-    radish: OrderItem = new OrderItem(true);
-    beanSprout: OrderItem = new OrderItem(true);
-    cabbage: OrderItem = new OrderItem(true);
-    beets: OrderItem = new OrderItem(true);
+    eggs: OrderItem = new OrderItem();
+    carrot: OrderItem = new OrderItem();
+    cucumber: OrderItem = new OrderItem();
+    radish: OrderItem = new OrderItem();
+    beanSprout: OrderItem = new OrderItem();
+    cabbage: OrderItem = new OrderItem();
+    beets: OrderItem = new OrderItem();
 }
 
 class Sauce {

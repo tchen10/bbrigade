@@ -5,13 +5,14 @@ import {OrderService} from '../services/order_service';
     selector: 'orders',
     template: `
         <div class="row">
-            <div class="col-md-4">
-                <h1>Orders</h1>
-                <order-list [orders]="orderService.orders$"></order-list>
-            </div>
-            <div class="col-md-8">
-                <order-form (createOrder)="orderService.create($event)"></order-form>
-            </div>
+            <h1>Orders</h1>
+        </div>
+        <div class="row">
+            <h2>New Order</h2>
+            <order-form (createOrder)="orderService.create($event)"></order-form>
+        </div>
+        <div class="row">
+            <order-list [orders]="orderService.orders$"></order-list>
         </div>
     `
 })

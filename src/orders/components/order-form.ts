@@ -3,14 +3,16 @@ import {Order} from '../models/order';
 
 @Component({
     selector: 'order-form',
+    styles: [
+        require('./order-form.scss')
+    ],
     template: `
-        <h2>New Order</h2>
         <form class="order-form">
-            <div class="form-group">
-                <label for="name">Name: </label>
+            <div class="form-group col-md-12">
+                <h4>Name: </h4>
                 <input required type="text" name="name" [(ngModel)]="order.name"/>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-3">
                 <h4>Base 1:</h4>
                 <form-checkbox [label]="'White Rice'" [name]="'whiteRice'"
                                [(orderItem)]="order.base.whiteRice"></form-checkbox>
@@ -21,7 +23,7 @@ import {Order} from '../models/order';
                 <form-checkbox [label]="'Lettuce'" [name]="'lettuce'"
                                [(orderItem)]="order.base.lettuce"></form-checkbox>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-3">
                 <h4>Base 2:</h4>
                 <form-checkbox [label]="'Chicken'" [name]="'chicken'"
                                [(orderItem)]="order.protein.chicken"></form-checkbox>
@@ -34,7 +36,7 @@ import {Order} from '../models/order';
                 <form-checkbox [label]="'Mushroom'" [name]="'mushroom'"
                                [(orderItem)]="order.protein.mushroom"></form-checkbox>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-3">
                 <h4>Toppings:</h4>
                 <form-checkbox [label]="'Eggs'" [name]="'eggs'" [(orderItem)]="order.topping.eggs"></form-checkbox>
                 <form-checkbox [label]="'Carrot'" [name]="'carrot'"
@@ -49,7 +51,7 @@ import {Order} from '../models/order';
                                [(orderItem)]="order.topping.cabbage"></form-checkbox>
                 <form-checkbox [label]="'Beets'" [name]="'beets'" [(orderItem)]="order.topping.beets"></form-checkbox>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-3">
                 <h4>Sauce:</h4>
                 <form-checkbox [label]="'Korean Hot Sauce'" [name]="'koreanHot'"
                                [(orderItem)]="order.sauce.koreanHot"></form-checkbox>
@@ -64,7 +66,18 @@ import {Order} from '../models/order';
                 <form-checkbox [label]="'Sesame Seeds'" [name]="'sesameSeeds'"
                                [(orderItem)]="order.sauce.sesameSeeds"></form-checkbox>
             </div>
-            <button class="btn btn-default" (click)="submit()">Submit</button>
+            <div class="col-md-12">
+                <div class="form-center">
+                    <div class="form-group">
+                    <textarea required type="text" name="name" placeholder="anything else?"
+                              [(ngModel)]="order.comments">
+                    </textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-default btn-block" (click)="submit()">Submit</button>
+                    </div>
+                </div>
+            </div>
         </form>
     `
 })

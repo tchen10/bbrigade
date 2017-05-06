@@ -1,0 +1,29 @@
+.form-row {
+  margin-bottom: 15px;
+
+  select {
+    height: 22px;
+    width: 80px;
+    font-size: x-small;
+  }
+
+  input.comments {
+    width: 100%;
+  }
+
+  .order-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .options {
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: 5px;
+      color: #aaaaaa;
+      cursor: pointer;
+    }
+  }
+}
