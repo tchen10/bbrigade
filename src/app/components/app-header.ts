@@ -1,28 +1,19 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-header',
-  styles: [
-    require('./app-header.scss')
-  ],
-  template: `
-    <header class="header">
-      <div class="g-row">
-        <div class="g-col">
-          <h1 class="header__title">Bibille Brigade</h1>
-
-          <ul class="header__links">
-            <li *ngIf="authenticated"><a class="header__link" (click)="signOut.emit()" href="#">Sign out</a></li>
-          </ul>
-        </div>
-      </div>
-    </header>
-  `
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-header',
+    template: `
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <h1 class="navbar-brand">Bibille Brigade</h1>
+                <p class="navbar-text navbar-right"><a *ngIf="authenticated" (click)="signOut.emit()" href="#">Sign out</a></p>
+            </div>
+        </nav>
+    `
 })
 
 export class AppHeaderComponent {
-  @Input() authenticated: boolean;
-  @Output() signOut = new EventEmitter(false);
+    @Input() authenticated: boolean;
+    @Output() signOut = new EventEmitter(false);
 }
