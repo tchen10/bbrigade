@@ -4,9 +4,6 @@ import {Order} from '../models/order';
 
 @Component({
     selector: 'orders',
-    styles: [
-        require('./orders.scss')
-    ],
     template: `
         <div class="row">
             <div class="header-row">

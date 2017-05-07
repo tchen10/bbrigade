@@ -7,3 +7,13 @@ table {
 span.glyphicon {
   cursor: pointer;
 }
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    font-size: medium;
+  }
+}

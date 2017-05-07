@@ -7,6 +7,10 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@
         <nav class="navbar navbar-default">
             <div class="container">
                 <a href="/orders" class="navbar-brand">Bibille Brigade</a>
+                <ul class="nav navbar-nav">
+                    <li><a href="/meals">Lunch</a></li>
+                    <li><a href="/orders">Orders</a></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li *ngIf="authenticated"><a (click)="signOut.emit()" href="#">Sign out</a></li>
                 </ul>
