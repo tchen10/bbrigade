@@ -1,11 +1,16 @@
 import {Component, Input} from '@angular/core';
-import {Meal} from '../models/meal';
+import {IMeal} from '../models/meal';
+
 @Component({
     selector: 'new-meal',
     template: `
-        <div>{{meal.date}}</div>
+        <div class="row">
+            <h2>{{meal.date}}</h2>
+        </div>
+
+        <meal-form [mealKey]="meal.$key"></meal-form>
     `
 })
 export class NewMealComponent {
-    @Input() meal: Meal;
+    @Input() meal: IMeal;
 }

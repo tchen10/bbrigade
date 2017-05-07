@@ -7,6 +7,7 @@ import {OrderService} from '../orders/services/order_service';
 import {MealsComponent} from './components/meals';
 import {MealService} from './services/meal_service';
 import {NewMealComponent} from './components/new_meal';
+import {MealFormComponent} from './components/meal-form';
 
 const routes: Routes = [
     {path: 'meals', component: MealsComponent, canActivate: [AuthGuard]},
@@ -15,7 +16,8 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         MealsComponent,
-        NewMealComponent
+        NewMealComponent,
+        MealFormComponent
     ],
     imports: [
         CommonModule,
