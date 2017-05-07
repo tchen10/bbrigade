@@ -1,22 +1,26 @@
 import {Injectable} from '@angular/core';
 import {IOrder, Order} from '../models/order';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
-import {AuthService} from '../../auth/services/auth-service';
+import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2';
+import {OrderCategory} from '../models/order-category';
 
 @Injectable()
 export class OrderService {
     orders$: FirebaseListObservable<IOrder[]>;
     private PATH = `/orders`;
+    private db: AngularFireDatabase;
 
-    constructor(af: AngularFire, auth: AuthService) {
-        this.orders$ = af.database.list(this.PATH);
+    constructor(db: AngularFireDatabase) {
+        this.db = db;
+        this.orders$ = this.db.list(this.PATH);
     }
 
     create(order: Order): firebase.Promise<any> {
         return this.orders$.push(order);
     }
 
-    update(order: IOrder): firebase.Promise<any> {
-        return this.orders$.update(order.$key, order);
+
+    updateCategory(orderKey: string, categoryIndex: number, updatedCategory: OrderCategory): firebase.Promise<any> {
+        const dbCategory  = this.db.object(this.PATH + `/${orderKey}/orderCategories/${categoryIndex}`);
+        return dbCategory.update(updatedCategory);
     }
 }

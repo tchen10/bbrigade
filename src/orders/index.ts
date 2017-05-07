@@ -8,7 +8,9 @@ import {OrderListComponent} from './components/order-list';
 import {OrderFormComponent} from './components/order-form';
 import {OrderService} from './services/order_service';
 import {OrderFormGroupComponent} from './components/order-form-group';
-import {OrderFormCheckboxComponent} from './components/form-checkbox';
+import {OrderFormCheckboxComponent} from './components/order-form-checkbox';
+import {OrderCategoryEditComponent} from './components/order-category-edit';
+import {OrderListInlineEdit} from './components/order-list-inline-edit';
 
 const routes: Routes = [
     {path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]},
@@ -21,7 +23,9 @@ const routes: Routes = [
         OrderListComponent,
         OrderFormComponent,
         OrderFormGroupComponent,
-        OrderFormCheckboxComponent
+        OrderFormCheckboxComponent,
+        OrderCategoryEditComponent,
+        OrderListInlineEdit
     ],
     imports: [
         CommonModule,

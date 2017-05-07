@@ -16,12 +16,12 @@ import {OrderItem} from '../models/order-item';
             <tbody>
             <tr *ngFor='let order of orders | async'>
                 <td>
-                    {{order.name}}
-                    <span class="glyphicon glyphicon-pencil"></span>
+                    <div>{{order.name}}</div>
+                    <div>{{order.comments}}</div>
                 </td>
-                <td *ngFor="let category of order.orderCategories">
-                    {{display(category.orderItems)}}
-                </td>
+                <td order-list-inline-edit *ngFor="let category of order.orderCategories; let i = index;"
+                                        [readonly]="display(category.orderItems)" [orderKey]="order.$key"
+                                        [categoryIndex]="i" [category]="category"></td>
             </tr>
             </tbody>
         </table>

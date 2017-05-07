@@ -4,7 +4,7 @@ import {OrderItem} from '../models/order-item';
 @Component({
     selector: 'form-checkbox',
     styles: [
-        require('./form-checkbox.scss')
+        require('./order-form-checkbox.scss')
     ],
     template: `
         <div class="form-row">
