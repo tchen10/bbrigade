@@ -1,10 +1,11 @@
 import {Component, Input} from '@angular/core';
-import {IOrder} from '../models/order';
-import {OrderItem} from '../models/order-item';
+import {Order} from '../../orders/models/order';
+import {OrderItem} from '../../orders/models/order-item';
+import * as _ from 'lodash';
 import {displayOrderItems} from '../../common/functions/display-order-item';
 
 @Component({
-    selector: 'order-list',
+    selector: 'meal-order-list',
     template: `
         <table class="table table-condensed table-hover">
             <thead>
@@ -15,21 +16,26 @@ import {displayOrderItems} from '../../common/functions/display-order-item';
             <th>Sauce</th>
             </thead>
             <tbody>
-            <tr *ngFor='let order of orders | async'>
+            <tr *ngFor='let order of orders'>
                 <td>
                     <div>{{order.name}}</div>
                     <div>{{order.comments}}</div>
                 </td>
-                <td order-list-inline-edit *ngFor="let category of order.orderCategories; let i = index;"
-                                        [readonly]="display(category.orderItems)" [orderKey]="order.$key"
-                                        [categoryIndex]="i" [category]="category"></td>
+                <td *ngFor="let category of order.orderCategories; let i = index;">
+                    <div>{{display(category.orderItems)}}</div>
+                </td>
             </tr>
             </tbody>
         </table>
     `
 })
-export class OrderListComponent {
-    @Input() orders: IOrder[];
+export class MealOrderList {
+    @Input('mealOrders')
+    set mealOrders(value: { key: string, order: Order }) {
+        this.orders = _.values(value);
+    }
+
+    orders: Order[];
 
     display(orderItems: OrderItem[]): string {
         return displayOrderItems(orderItems);

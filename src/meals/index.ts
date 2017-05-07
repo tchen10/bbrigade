@@ -6,8 +6,9 @@ import {AuthGuard} from '../auth';
 import {OrderService} from '../orders/services/order_service';
 import {MealsComponent} from './components/meals';
 import {MealService} from './services/meal_service';
-import {NewMealComponent} from './components/new_meal';
+import {NewMealComponent} from './components/new-meal';
 import {MealFormComponent} from './components/meal-form';
+import {MealOrderList} from './components/meal-order-list';
 
 const routes: Routes = [
     {path: 'meals', component: MealsComponent, canActivate: [AuthGuard]},
@@ -17,7 +18,8 @@ const routes: Routes = [
     declarations: [
         MealsComponent,
         NewMealComponent,
-        MealFormComponent
+        MealFormComponent,
+        MealOrderList
     ],
     imports: [
         CommonModule,
