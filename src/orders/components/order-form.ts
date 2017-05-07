@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Order} from '../models/order';
 import {OrderService} from '../services/order_service';
 import {Router} from '@angular/router';
@@ -14,7 +14,8 @@ import {Router} from '@angular/router';
                 <h4>Name: </h4>
                 <input required type="text" name="name" [(ngModel)]="order.name"/>
             </div>
-            <order-form-group *ngFor="let category of order.orderCategories" [orderCategory]="category"></order-form-group>
+            <order-form-group *ngFor="let category of order.orderCategories"
+                              [orderCategory]="category"></order-form-group>
             <div class="col-md-12">
                 <div class="form-center">
                     <div class="form-group">
@@ -23,7 +24,8 @@ import {Router} from '@angular/router';
                     </textarea>
                     </div>
                     <div class="form-group">
-                        <button [disabled]="formSubmitted" class="btn btn-default btn-block" (click)="submit()">Submit</button>
+                        <button [disabled]="formSubmitted" class="btn btn-default btn-block" (click)="submit()">Submit
+                        </button>
                     </div>
                 </div>
             </div>
@@ -31,7 +33,7 @@ import {Router} from '@angular/router';
     `
 })
 export class OrderFormComponent {
-    order: Order = Order.createBibimbap();
+    @Input() order: Order;
     formSubmitted: boolean = false;
 
     constructor(public orderService: OrderService, public router: Router) {

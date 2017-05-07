@@ -11,10 +11,11 @@ import {OrderFormGroupComponent} from './components/order-form-group';
 import {OrderFormCheckboxComponent} from './components/order-form-checkbox';
 import {OrderCategoryEditComponent} from './components/order-category-edit';
 import {OrderListInlineEdit} from './components/order-list-inline-edit';
+import {NewOrderComponent} from './components/new-order';
 
 const routes: Routes = [
     {path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]},
-    {path: 'orders/create', component: OrderFormComponent, canActivate: [AuthGuard]}
+    {path: 'orders/create', component: NewOrderComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
@@ -25,7 +26,8 @@ const routes: Routes = [
         OrderFormGroupComponent,
         OrderFormCheckboxComponent,
         OrderCategoryEditComponent,
-        OrderListInlineEdit
+        OrderListInlineEdit,
+        NewOrderComponent
     ],
     imports: [
         CommonModule,

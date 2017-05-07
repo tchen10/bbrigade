@@ -23,6 +23,28 @@ export class Order implements IOrder {
         return new Order(snapshot.name, snapshot.comments, OrderCategory.createFromSnapshot(snapshot.orderCategories));
     }
 
+    static createUdon(): Order {
+        return new Order(undefined, undefined, [
+            new OrderCategory('Base 1', [
+                new OrderItem('Udon', 'udon', true)
+            ]),
+            new OrderCategory('Protein', [
+                new OrderItem('Chicken', 'chicken'),
+                new OrderItem('Beef', 'beef'),
+                new OrderItem('Spicy Pork', 'spicyPork'),
+                new OrderItem('Tofu', 'tofu'),
+                new OrderItem('Mushroom', 'mushroom')
+            ]),
+            new OrderCategory('Toppings', [
+                new OrderItem('Eggs', 'eggs', true),
+                new OrderItem('Carrots', 'carrots', true),
+                new OrderItem('Crown Daisy', 'crownDaisy', true),
+                new OrderItem('Enoki Mushroom', 'enokiMushroom', true),
+                new OrderItem('Scallion', 'scallion', true)
+            ])
+        ]);
+    }
+
     static createBibimbap(): Order {
         return new Order(undefined, undefined, [
             new OrderCategory('Base 1', [
@@ -31,7 +53,7 @@ export class Order implements IOrder {
                 new OrderItem('Purple Rice', 'purpleRice'),
                 new OrderItem('Lettuce', 'lettuce')
             ]),
-            new OrderCategory('Base 2', [
+            new OrderCategory('Protein', [
                 new OrderItem('Chicken', 'chicken'),
                 new OrderItem('Beef', 'beef'),
                 new OrderItem('Spicy Pork', 'spicyPork'),
@@ -39,13 +61,13 @@ export class Order implements IOrder {
                 new OrderItem('Mushroom', 'mushroom')
             ]),
             new OrderCategory('Toppings', [
-                new OrderItem('Eggs', 'eggs'),
-                new OrderItem('Carrots', 'carrots'),
-                new OrderItem('Cucumbers', 'cucumbers'),
-                new OrderItem('Radish', 'radish'),
-                new OrderItem('Bean Sprouts', 'beanSprouts'),
-                new OrderItem('Cabbage', 'cabbage'),
-                new OrderItem('Beets', 'beets')
+                new OrderItem('Eggs', 'eggs', true),
+                new OrderItem('Carrots', 'carrots', true),
+                new OrderItem('Cucumbers', 'cucumbers', true),
+                new OrderItem('Radish', 'radish', true),
+                new OrderItem('Bean Sprouts', 'beanSprouts', true),
+                new OrderItem('Cabbage', 'cabbage', true),
+                new OrderItem('Beets', 'beets', true)
             ]),
             new OrderCategory('Sauce', [
                 new OrderItem('Korean Hot Sauce', 'koreanHot'),

@@ -9,7 +9,7 @@ import {OrderItem} from '../models/order-item';
             <thead>
             <th>Name</th>
             <th>Base 1</th>
-            <th>Base 2</th>
+            <th>Protein</th>
             <th>Toppings</th>
             <th>Sauce</th>
             </thead>
