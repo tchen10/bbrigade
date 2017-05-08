@@ -3,6 +3,7 @@ import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable} f
 import {IMeal, Meal} from '../models/meal';
 import {Order} from '../../orders/models/order';
 import {OrderService} from '../../orders/services/order_service';
+import {OrderCategory} from '../../orders/models/order-category';
 
 @Injectable()
 export class MealService {
@@ -42,5 +43,10 @@ export class MealService {
             const newMealOrder = Order.createFromSnapshot(snapshot);
             this.db.list(this.PATH + `/${mealKey}/mealOrders`).push(newMealOrder);
         });
+    }
+
+    updateCategory(mealKey: string, orderKey: string, categoryIndex: number, category: OrderCategory): firebase.Promise<any> {
+        const dbCategory  = this.db.object(this.PATH + `/${mealKey}/mealOrders/${orderKey}/orderCategories/${categoryIndex}`);
+        return dbCategory.update(category);
     }
 }

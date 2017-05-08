@@ -12,7 +12,7 @@ import {IMeal} from '../models/meal';
         </div>
         <meal-form [mealKey]="meal.$key"></meal-form>
         <div class="row space">
-            <meal-order-list [mealOrders]="meal.mealOrders"></meal-order-list>
+            <meal-order-list [mealKey]="meal.$key" [mealOrders]="meal.mealOrders"></meal-order-list>
         </div>
     `
 })

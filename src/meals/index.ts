@@ -8,7 +8,9 @@ import {MealsComponent} from './components/meals';
 import {MealService} from './services/meal_service';
 import {NewMealComponent} from './components/new-meal';
 import {MealFormComponent} from './components/meal-form';
-import {MealOrderList} from './components/meal-order-list';
+import {MealOrderListComponent} from './components/meal-order-list';
+import {MealOrderCategoryEditComponent} from './components/meal-order-category-edit';
+import {SharedModule} from '../common/index';
 
 const routes: Routes = [
     {path: 'meals', component: MealsComponent, canActivate: [AuthGuard]},
@@ -19,12 +21,14 @@ const routes: Routes = [
         MealsComponent,
         NewMealComponent,
         MealFormComponent,
-        MealOrderList
+        MealOrderListComponent,
+        MealOrderCategoryEditComponent
     ],
     imports: [
         CommonModule,
         FormsModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        SharedModule
     ],
     providers: [
         OrderService,

@@ -1,7 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {Order} from '../../orders/models/order';
+import {IOrder, Order} from '../../orders/models/order';
 import {OrderItem} from '../../orders/models/order-item';
-import * as _ from 'lodash';
 import {displayOrderItems} from '../../common/functions/display-order-item';
 
 @Component({
@@ -21,21 +20,28 @@ import {displayOrderItems} from '../../common/functions/display-order-item';
                     <div>{{order.name}}</div>
                     <div>{{order.comments}}</div>
                 </td>
-                <td *ngFor="let category of order.orderCategories; let i = index;">
-                    <div>{{display(category.orderItems)}}</div>
+                <td #inline inline-edit *ngFor="let category of order.orderCategories; let i = index;"
+                    [readonly]="display(category.orderItems)">
+                    <meal-order-category-edit [mealKey]="mealKey" [orderKey]="order.$key" [categoryIndex]="i" [category]="category"
+                                         (editInProgress)="inline.toggleEditing($event)"></meal-order-category-edit>
                 </td>
             </tr>
             </tbody>
         </table>
     `
 })
-export class MealOrderList {
+export class MealOrderListComponent {
+    @Input() mealKey: string;
     @Input('mealOrders')
     set mealOrders(value: { key: string, order: Order }) {
-        this.orders = _.values(value);
+        const keys = Object.keys(value);
+        this.orders = [];
+        keys.forEach((key) => {
+           this.orders.push({$key: key, ...value[key]});
+        });
     }
 
-    orders: Order[];
+    orders: IOrder[];
 
     display(orderItems: OrderItem[]): string {
         return displayOrderItems(orderItems);
