@@ -14,8 +14,8 @@ import {Router} from '@angular/router';
                 <h4>Name: </h4>
                 <input required type="text" name="name" [(ngModel)]="order.name"/>
             </div>
-            <order-form-group *ngFor="let category of order.orderCategories"
-                              [orderCategory]="category"></order-form-group>
+            <form-group *ngFor="let category of order.orderCategories"
+                              [orderCategory]="category"></form-group>
             <div class="col-md-12">
                 <div class="form-center">
                     <div class="form-group">

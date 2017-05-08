@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core';
-import {OrderCategory} from '../models/order-category';
+import {OrderCategory} from '../../orders/models/order-category';
 
 @Component({
-    selector: 'order-form-group',
+    selector: 'form-group',
     template: `
         <div class="form-group col-md-3">
             <h4>{{orderCategory.name}}</h4>
@@ -10,6 +10,6 @@ import {OrderCategory} from '../models/order-category';
         </div>
     `
 })
-export class OrderFormGroupComponent {
+export class FormGroupComponent {
     @Input() orderCategory: OrderCategory;
 }

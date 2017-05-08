@@ -7,11 +7,10 @@ import {OrdersComponent} from './components/orders';
 import {OrderListComponent} from './components/order-list';
 import {OrderFormComponent} from './components/order-form';
 import {OrderService} from './services/order_service';
-import {OrderFormGroupComponent} from './components/order-form-group';
-import {OrderFormCheckboxComponent} from './components/order-form-checkbox';
 import {OrderCategoryEditComponent} from './components/order-category-edit';
 import {OrderListInlineEdit} from './components/order-list-inline-edit';
 import {NewOrderComponent} from './components/new-order';
+import {SharedModule} from '../common/index';
 
 const routes: Routes = [
     {path: 'orders', component: OrdersComponent, canActivate: [AuthGuard]},
@@ -23,8 +22,6 @@ const routes: Routes = [
         OrdersComponent,
         OrderListComponent,
         OrderFormComponent,
-        OrderFormGroupComponent,
-        OrderFormCheckboxComponent,
         OrderCategoryEditComponent,
         OrderListInlineEdit,
         NewOrderComponent
@@ -32,7 +29,8 @@ const routes: Routes = [
     imports: [
         CommonModule,
         FormsModule,
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        SharedModule
     ],
     providers: [
         OrderService

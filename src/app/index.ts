@@ -9,6 +9,7 @@ import {OrdersModule} from '../orders';
 import {AppComponent} from './components/app';
 import {AppHeaderComponent} from './components/app-header';
 import {MealsModule} from '../meals/index';
+import {SharedModule} from "../common/index";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MealsModule} from '../meals/index';
         AuthModule,
         FirebaseModule,
         OrdersModule,
-        MealsModule
+        MealsModule,
+        SharedModule
     ]
 })
 

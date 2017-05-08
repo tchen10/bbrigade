@@ -1,10 +1,10 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {OrderItem} from '../models/order-item';
+import {OrderItem} from "../../orders/models/order-item";
 
 @Component({
     selector: 'form-checkbox',
     styles: [
-        require('./order-form-checkbox.scss')
+        require('./form-checkbox.scss')
     ],
     template: `
         <div class="form-row">
@@ -32,7 +32,7 @@ import {OrderItem} from '../models/order-item';
     `
 })
 
-export class OrderFormCheckboxComponent {
+export class FormCheckboxComponent {
     @Input() orderItem: OrderItem;
     @Output() orderItemChange = new EventEmitter();
 
