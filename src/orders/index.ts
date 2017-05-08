@@ -8,7 +8,6 @@ import {OrderListComponent} from './components/order-list';
 import {OrderFormComponent} from './components/order-form';
 import {OrderService} from './services/order_service';
 import {OrderCategoryEditComponent} from './components/order-category-edit';
-import {OrderListInlineEdit} from './components/order-list-inline-edit';
 import {NewOrderComponent} from './components/new-order';
 import {SharedModule} from '../common/index';
 
@@ -23,7 +22,6 @@ const routes: Routes = [
         OrderListComponent,
         OrderFormComponent,
         OrderCategoryEditComponent,
-        OrderListInlineEdit,
         NewOrderComponent
     ],
     imports: [

@@ -20,9 +20,11 @@ import {displayOrderItems} from '../../common/functions/display-order-item';
                     <div>{{order.name}}</div>
                     <div>{{order.comments}}</div>
                 </td>
-                <td order-list-inline-edit *ngFor="let category of order.orderCategories; let i = index;"
-                                        [readonly]="display(category.orderItems)" [orderKey]="order.$key"
-                                        [categoryIndex]="i" [category]="category"></td>
+                <td #inline inline-edit *ngFor="let category of order.orderCategories; let i = index;"
+                                        [readonly]="display(category.orderItems)">
+                    <order-category-edit [orderKey]="order.$key" [categoryIndex]="i" [category]="category"
+                    (editInProgress)="inline.toggleEditing($event)"></order-category-edit>
+                </td>
             </tr>
             </tbody>
         </table>
