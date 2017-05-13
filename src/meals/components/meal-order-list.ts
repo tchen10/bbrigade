@@ -34,11 +34,13 @@ export class MealOrderListComponent {
     @Input() mealKey: string;
     @Input('mealOrders')
     set mealOrders(value: { key: string, order: Order }) {
-        const keys = Object.keys(value);
-        this.orders = [];
-        keys.forEach((key) => {
-           this.orders.push({$key: key, ...value[key]});
-        });
+        if (value) {
+            const keys = Object.keys(value);
+            this.orders = [];
+            keys.forEach((key) => {
+                this.orders.push({$key: key, ...value[key]});
+            });
+        }
     }
 
     orders: IOrder[];
