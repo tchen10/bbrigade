@@ -4,17 +4,20 @@ import {FormsModule} from '@angular/forms';
 import {FormCheckboxComponent} from './components/form-checkbox';
 import {FormGroupComponent} from './components/form-group';
 import {InlineEdit} from './components/inline-edit';
+import {CountdownComponent} from './components/countdown';
 
 @NgModule({
     declarations: [
         FormGroupComponent,
         FormCheckboxComponent,
-        InlineEdit
+        InlineEdit,
+        CountdownComponent
     ],
     exports: [
         FormGroupComponent,
         FormCheckboxComponent,
-        InlineEdit
+        InlineEdit,
+        CountdownComponent
     ],
     imports: [
         CommonModule,
