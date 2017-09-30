@@ -15,13 +15,13 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@
                   </button>
                   <a href="/orders" class="navbar-brand">Bibille Brigade</a>
                 </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div *ngIf="authenticated" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="/meals">Lunch</a></li>
                     <li><a href="/orders">Orders</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li *ngIf="authenticated"><a (click)="signOut.emit()" href="#">Sign out</a></li>
+                    <li><a (click)="signOut.emit()" href="#">Sign out</a></li>
                 </ul>
                 </div>
             </div>
