@@ -10,9 +10,7 @@ import {AuthService} from '../services/auth-service';
     template: `
         <div class="row sign-in">
             <h1 class="sign-in__heading">Sign in</h1>
-            <button class="sign-in__button" (click)="signInAnonymously()" type="button">Anonymously</button>
             <button class="sign-in__button" (click)="signInWithGoogle()" type="button">Google</button>
-            <button class="sign-in__button" (click)="signInWithFacebook()" type="button">Facebook</button>
         </div>
     `
 })
