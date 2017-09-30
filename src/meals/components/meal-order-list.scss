@@ -1,0 +1,9 @@
+.glyphicon-trash {
+  display: none;
+}
+
+tr:hover {
+    .glyphicon-trash {
+      display: inline-block;
+    }
+}

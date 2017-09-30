@@ -1,5 +1,10 @@
 form {
+  .form-inline {
+    display: flex;
+  }
+
   select {
     width: 80%;
+    margin-right: 5px;
   }
 }

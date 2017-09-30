@@ -2,9 +2,13 @@ import {Component, Input} from '@angular/core';
 import {IOrder, Order} from '../../orders/models/order';
 import {OrderItem} from '../../orders/models/order-item';
 import {displayOrderItems} from '../../common/functions/display-order-item';
+import {MealService} from '../services/meal_service';
 
 @Component({
     selector: 'meal-order-list',
+    styles: [
+        require('./meal-order-list.scss')
+    ],
     template: `
         <table class="table table-condensed table-hover">
             <thead>
@@ -17,7 +21,7 @@ import {displayOrderItems} from '../../common/functions/display-order-item';
             <tbody>
             <tr *ngFor='let order of orders'>
                 <td>
-                    <div>{{order.name}}</div>
+                    <div>{{order.name}} <span (click)="removeOrder(order)" class="glyphicon glyphicon-trash"></span></div>
                     <div>{{order.comments}}</div>
                 </td>
                 <td #inline inline-edit *ngFor="let category of order.orderCategories; let i = index;"
@@ -45,7 +49,16 @@ export class MealOrderListComponent {
 
     orders: IOrder[];
 
+    constructor(public mealService: MealService) {
+    }
+
     display(orderItems: OrderItem[]): string {
         return displayOrderItems(orderItems);
+    }
+
+    removeOrder(order: IOrder): void {
+        this.mealService.deleteOrder(this.mealKey, order.$key);
+        const indexToRemove = this.orders.indexOf(order);
+        this.orders.splice(indexToRemove, 1);
     }
 }

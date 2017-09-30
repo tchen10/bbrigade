@@ -45,6 +45,10 @@ export class MealService {
         });
     }
 
+    deleteOrder(mealKey: string, selectedOrderKey: string): void {
+        this.db.list(this.PATH + `/${mealKey}/mealOrders`).remove(selectedOrderKey);
+    }
+
     updateCategory(mealKey: string, orderKey: string, categoryIndex: number, category: OrderCategory): firebase.Promise<any> {
         const dbCategory  = this.db.object(this.PATH + `/${mealKey}/mealOrders/${orderKey}/orderCategories/${categoryIndex}`);
         return dbCategory.update(category);
