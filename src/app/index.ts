@@ -9,7 +9,7 @@ import {OrdersModule} from '../orders';
 import {AppComponent} from './components/app';
 import {AppHeaderComponent} from './components/app-header';
 import {MealsModule} from '../meals/index';
-import {SharedModule} from "../common/index";
+import {SharedModule} from '../common/index';
 
 
 @NgModule({

@@ -23,7 +23,7 @@ import {IMeal} from '../models/meal';
         </div>
     `
 })
-export class MealsComponent implements OnInit{
+export class MealsComponent implements OnInit {
     mealExists: boolean;
     meal: IMeal;
     pageReady: boolean = false;

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {OrderItem} from "../../orders/models/order-item";
+import {OrderItem} from '../../orders/models/order-item';
 
 @Component({
     selector: 'form-checkbox',
